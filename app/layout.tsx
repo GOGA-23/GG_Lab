@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { CustomBtn } from "@/components/custom-ui/CustomBtn";
 import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
+import { on } from "events";
+import { onBoardUser } from "@/lib/auth/actions";
 // import { SignOutButton } from "@/components/custom-ui/sign-out-button";
 
 
@@ -45,7 +47,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-
+  await onBoardUser();
   return (
     <html
       lang="en"
