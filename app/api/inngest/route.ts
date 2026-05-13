@@ -1,8 +1,9 @@
-import { processTask } from "@/inngest/functions";
+import { codeAgent } from "@/inngest/functions";
 import { inngest } from "@/inngest/client";
 import { serve } from "inngest/next";
 
 export const { GET, POST, PUT } = serve({
   client: inngest,
-  functions: [processTask],
+  functions: [codeAgent],
+  streaming: true,
 });
