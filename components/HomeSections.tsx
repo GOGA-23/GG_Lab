@@ -1,31 +1,21 @@
 "use client";
 import { buildPrompt } from "@/lib/data";
-import PromptBox from "./custom-ui/promptBox";
 import { useState } from "react";
 import { CustomCard, Jumbotron } from "./custom-ui/CustomCard";
+import PromptBox from "./custom-ui/PromptBox";
 
 type HomeSectionsProps = {
-    user: {
-        id: string;
-        firstName: string | null;
-        lastName: string | null;
-        imageUrl: string;
-        email?: string;
-    } | null;
-
+    userName: string | undefined;
     isAuthenticated: boolean;
 };
 
-const HomeSections = ({ user, isAuthenticated }: HomeSectionsProps) => {
+const HomeSections = ({ userName, isAuthenticated }: HomeSectionsProps) => {
     const [prompt, setPrompt] = useState("");
 
-    const jumbotronUser = user
-        ? { id: user.id, firstName: user.firstName ?? "" }
-        : { id: "", firstName: "" };
 
     return (
         <div className="flex flex-col items-center justify-center gap-6 text-center max-w-6xl mx-auto py-10 relative min-h-screen overflow-hidden">
-            <Jumbotron user={jumbotronUser} isAuthenticated={isAuthenticated} />
+            <Jumbotron userName={userName} isAuthenticated={isAuthenticated} />
             <div className="max-w-4xl flex flex-wrap justify-center md:items-center gap-3 md:gap-5 mt-2.5 md:mt-5">
                 {buildPrompt.map((item) => (
                     <CustomCard

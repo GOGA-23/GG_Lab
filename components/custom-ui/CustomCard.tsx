@@ -43,10 +43,10 @@ export const CustomCard = ({
 };
 
 export const Jumbotron = ({
-    user,
+    userName,
     isAuthenticated,
 }: {
-    user: { firstName: string };
+    userName: string | undefined;
     isAuthenticated: boolean;
 }) => {
     return (
@@ -64,11 +64,14 @@ export const Jumbotron = ({
                     className={"object-cover object-center"}
                 />
             </div>
-            <h1 className="text-xl md:text-3xl lg:text-4xl font-mono font-semibold text-[#F8FAFC] tracking-wider">
-                {isAuthenticated
-                    ? `Welcome to GG Lab 🤖 App Builder ${user?.firstName}💖`
-                    : "Welcome to GG Lab 🤖 App Builder"}
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-mono font-semibold text-[#F8FAFC] tracking-wider">
+                Welcome to GG Lab 🤖 App Builder
             </h1>
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-mono font-semibold text-[#F8FAFC] tracking-wider -mt-1.5">
+                {isAuthenticated
+                    ? `${userName}💖`
+                    : ""}
+            </h2>
             <p className="text-md md:text-xl tracking-wide text-[#F8FAFC]/80 font-sans">
                 Build amazing 🤖 applications and websites by chatting with AI
             </p>

@@ -1,26 +1,20 @@
+import { getUser } from "@/lib/auth/actions";
 import HomeSections from "./HomeSections";
 
-
-
 interface BuilderProps {
-    user: {
-        id: string;
-        firstName: string | null;
-        lastName: string | null;
-        imageUrl: string;
-        email?: string;
-    } | null;
-
+    userId: string | undefined;
     isAuthenticated: boolean;
 }
 
-const Builder = ({
-    user,
+async function Builder({
+    userId,
     isAuthenticated,
-}: BuilderProps) => {
+}: BuilderProps) {
+    const userData = await getUser(userId || "");
+
     return (
         <HomeSections
-            user={user}
+            userName={userData?.name || undefined}
             isAuthenticated={isAuthenticated}
         />
     );
